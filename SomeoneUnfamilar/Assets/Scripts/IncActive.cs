@@ -13,6 +13,6 @@ public class IncActive : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+         
     }
 }
