@@ -4,15 +4,45 @@ using UnityEngine;
 
 public class IncPrepare : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public GameObject preButton;
+    public GameObject actButton;
+
+    public GameObject IncZone;
+
+    public bool isPrepared;
+
+    
     void Start()
     {
-        
+        preButton = GameObject.Find("PrepareButton");
+        actButton = GameObject.Find("ActiveButton");
+        IncZone = GameObject.Find("IncinerateZone");
+        isPrepared = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Player")
+        {
+            if (!isPrepared && 
+                !actButton.GetComponent<IncActive>().isCooldown && 
+                !actButton.GetComponent<IncActive>().isActive)
+            {
+                StartCoroutine(Prepare());
+            }
+        }
+    }
+    
+    IEnumerator Prepare()
+    {
+        Debug.Log("소각장 준비시작");
+        yield return new WaitForSeconds(2f);    // 준비시간 (1분으로 취급)
+        isPrepared = true;
     }
 }
