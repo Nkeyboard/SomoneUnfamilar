@@ -20,13 +20,16 @@ public class DoorClose : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (Door.activeSelf)
+        if (other.tag == "Player")
         {
-            Door.SetActive(false);
-        }
-        else if(!Door.activeSelf)
-        {
-            Door.SetActive(true);
+            if (Door.activeSelf)
+            {
+                Door.SetActive(false);
+            }
+            else if (!Door.activeSelf)
+            {
+                Door.SetActive(true);
+            }
         }
     }
 }

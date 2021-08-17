@@ -8,6 +8,7 @@ public class IncBurn : MonoBehaviour
     public GameObject actButton;
 
     public GameObject IncZone;
+    
 
     void Start()
     {
@@ -21,13 +22,15 @@ public class IncBurn : MonoBehaviour
     {
         
     }
-    private void OnTriggerEnter(Collider other)
+    
+    private void OnTriggerStay(Collider other)
     {
         if (/*!preButton.GetComponent<IncPrepare>().isPrepared &&*/ 
-            actButton.GetComponent<IncActive>().isActive && 
-            !actButton.GetComponent<IncActive>().isCooldown){
-            
-
+            actButton.GetComponent<IncActive>().isActive /*&& 
+            !actButton.GetComponent<IncActive>().isCooldown &&
+            !actButton.GetComponent<IncActive>().activeShutdown*/){
+            Debug.Log(other + "¼Ò°¢");
+            Destroy(other.gameObject);
         }
     }
 }

@@ -42,7 +42,8 @@ public class IncPrepare : MonoBehaviour
     IEnumerator Prepare()
     {
         Debug.Log("소각장 준비시작");
-        yield return new WaitForSeconds(2f);    // 준비시간 (1분으로 취급)
+        yield return new WaitForSeconds(2f);    // 2초간 준비
+        Debug.Log("소각장 준비완료");
         isPrepared = true;
     }
 }
